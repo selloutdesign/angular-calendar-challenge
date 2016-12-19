@@ -4,8 +4,20 @@
 <title>Calendar Directive Challenge</title>
 <link rel="stylesheet" type="text/css" href="./main.css" />
 </head>
-<body>
+<body  ng-controller="calCtrl as vm">
 
+<select ng-model="vm.monthName" ng-change="vm.computeMonth()">
+	<option ng-repeat="x in vm.months" ">{{x}}</option>
+</select>
+<select ng-model="vm.selYear" ng-change="vm.computeMonth()">
+	<option ng-repeat="x in vm.years" ">{{x}}</option>
+</select>
+<div class="cal">
+	<div class="day" ng-class="day.month === vm.month ? 'day' : 'off-day'" ng-repeat="day in vm.monthRange.days">
+		{{day.day}}
+	</div>
+
+</div>
 <!-- your code for nav and calendar directive instance here -->
 
 <script type="text/javascript" src="./bower_components/angular/angular.js"></script>
